@@ -1,0 +1,144 @@
+{
+  "project_name": "Trade Journal",
+  "theme": "light",
+  "archetype": "Archetype 4: Swiss & High-Contrast",
+  "typography": {
+    "headings": {
+      "family": "Cabinet Grotesk",
+      "weights": ["400", "700", "800"],
+      "usage": "Use for all H1-H4 headings. Apply tracking-tight for H1-H2. Do NOT use Inter for headings."
+    },
+    "body": {
+      "family": "Manrope",
+      "weights": ["400", "500", "600"],
+      "usage": "Use for body text, form inputs, labels, and dashboard data. Highly legible."
+    },
+    "mono": {
+      "family": "JetBrains Mono",
+      "weights": ["400"],
+      "usage": "Use for trade metrics, stock tickers, date/time, and numeric data."
+    },
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-none font-extrabold",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight leading-tight font-bold",
+      "h3": "text-xl sm:text-2xl font-bold",
+      "h4": "text-lg sm:text-xl font-semibold",
+      "body": "text-base leading-relaxed",
+      "small": "text-sm text-muted-foreground",
+      "overline": "text-xs font-bold uppercase tracking-[0.2em]"
+    }
+  },
+  "colors": {
+    "light_mode": {
+      "background": "#FFFFFF",
+      "foreground": "#0A0A0A",
+      "card": "#FFFFFF",
+      "card_foreground": "#0A0A0A",
+      "popover": "#FFFFFF",
+      "popover_foreground": "#0A0A0A",
+      "primary": "#0A0A0A",
+      "primary_foreground": "#FFFFFF",
+      "secondary": "#F4F4F5",
+      "secondary_foreground": "#18181B",
+      "muted": "#F4F4F5",
+      "muted_foreground": "#71717A",
+      "accent": "#F4F4F5",
+      "accent_foreground": "#18181B",
+      "border": "#E4E4E7",
+      "input": "#E4E4E7",
+      "ring": "#0A0A0A",
+      "success": "#10B981",
+      "destructive": "#EF4444"
+    },
+    "dark_mode": {
+      "background": "#09090B",
+      "foreground": "#FAFAFA",
+      "card": "#09090B",
+      "card_foreground": "#FAFAFA",
+      "popover": "#09090B",
+      "popover_foreground": "#FAFAFA",
+      "primary": "#FAFAFA",
+      "primary_foreground": "#09090B",
+      "secondary": "#27272A",
+      "secondary_foreground": "#FAFAFA",
+      "muted": "#27272A",
+      "muted_foreground": "#A1A1AA",
+      "accent": "#27272A",
+      "accent_foreground": "#FAFAFA",
+      "border": "#27272A",
+      "input": "#27272A",
+      "ring": "#D4D4D8",
+      "success": "#10B981",
+      "destructive": "#EF4444"
+    }
+  },
+  "layout_and_spacing": {
+    "philosophy": "Generous spacing. Start mobile-first. Use optical alignment. The dashboard should use progressive disclosure, hiding complexity until needed.",
+    "marketing_page": {
+      "grid": "Gridcols-1 md:grid-cols-12 gap-8 to gap-12. Asymmetrical bento grids for features.",
+      "hero": "High visual impact, overlay with max bg-black/40 if image is used. Massive typography.",
+      "spacing": "py-24 to py-32 for sections."
+    },
+    "dashboard": {
+      "sidebar": "Fixed 256px wide sidebar. Thin borders.",
+      "content": "Grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6. One insight per scroll. High information density but clear hierarchy.",
+      "cards": "Subtle roundness (rounded-lg or rounded-xl max 8px). Flat solid background. 1px subtle border, no heavy shadow unless hovered.",
+      "spacing": "p-6 or p-8 inside cards."
+    }
+  },
+  "components": {
+    "buttons": "Shadcn UI Buttons. Minimalist. Primary button is stark contrast (Black in light mode, White in dark mode).",
+    "inputs_and_forms": "Shadcn UI Input, Select, Textarea. Use clear validation states. No custom raw HTML inputs.",
+    "cards": "Cardless or subtle 1px border cards. Dashboard components must utilize full height to avoid jagged bottoms.",
+    "dialogs": "Shadcn Dialog for confirmations and complex forms (like 'Create Trade' modal). Ensure 'Create Journal' can be a full page or a massive dialog.",
+    "navigation": "Sticky glassmorphism header for landing page (backdrop-blur-xl bg-background/70). Static sidebar for dashboard.",
+    "skeletons": "Shadcn Skeleton for loading states. Content-shaped placeholders with shimmer."
+  },
+  "motion_and_interactions": {
+    "hover": "Hover states must increase contrast and show subtle transform (e.g., -translate-y-1).",
+    "transitions": "Use specific properties (transition-transform, transition-colors duration-200 ease-out).",
+    "page_load": "Framer motion for staggered list entrance. Fade in for images."
+  },
+  "media": {
+    "image_urls": [
+      {
+        "category": "hero_background",
+        "url": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTB8MHwxfHNlYXJjaHwxfHxzdG9jayUyMHRyYWRpbmclMjBjaGFydCUyMGFic3RyYWN0fGVufDB8fHx8MTc4MzE2MDAyNXww&ixlib=rb-4.1.0&q=85",
+        "description": "Dark abstract stock market chart. Use for a high-end, immersive hero section background or marketing imagery."
+      },
+      {
+        "category": "feature_trading_laptop",
+        "url": "https://images.unsplash.com/photo-1625297673326-14790108da55?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzOTB8MHwxfHNlYXJjaHwzfHx0cmFkZXIlMjBhdCUyMGRlc2slMjBsYXB0b3B8ZW58MHx8fHwxNzgzMTYwMDI1fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Trader at desk. Ideal for the 'Why Choose Us' or 'Benefits' section."
+      },
+      {
+        "category": "feature_mobile_trading",
+        "url": "https://images.unsplash.com/photo-1570215171424-f74325192b55?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzOTB8MHwxfHNlYXJjaHwxfHx0cmFkZXIlMjBhdCUyMGRlc2slMjBsYXB0b3B8ZW58MHx8fHwxNzgzMTYwMDI1fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Man using phone and laptop, good for 'Trade anywhere' feature block."
+      },
+      {
+        "category": "sponsor_logo_1",
+        "url": "https://images.unsplash.com/photo-1648327749277-440d4459c1f6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzV8MHwxfHNlYXJjaHw0fHxjb21wYW55JTIwc3BvbnNvciUyMGxvZ28lMjBibGFjayUyMGFuZCUyMHdoaXRlfGVufDB8fHx8MTc4MzE2MDAyNXww&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract logo shape for social proof / testimonials section."
+      },
+      {
+        "category": "sponsor_logo_2",
+        "url": "https://images.unsplash.com/photo-1588333238936-10973c74118f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzV8MHwxfHNlYXJjaHwxfHxjb21wYW55JTIwc3BvbnNvciUyMGxvZ28lMjBibGFjayUyMGFuZCUyMHdoaXRlfGVufDB8fHx8MTc4MzE2MDAyNXww&ixlib=rb-4.1.0&q=85",
+        "description": "Text logo for social proof."
+      }
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Strictly follow the color palette. Generate Tailwind variables in global css for the light/dark mode.",
+    "Implement the landing page using custom Tailwind and HTML structure. Use Framer Motion for scroll animations.",
+    "Implement the dashboard using Shadcn UI components heavily. Use a fixed sidebar layout.",
+    "Add 'data-testid' to all interactive elements for robust testing.",
+    "Ensure dark mode toggle works perfectly.",
+    "For typography, import 'Cabinet Grotesk', 'Manrope', and 'JetBrains Mono' from Google Fonts or Fontshare.",
+    "Do NOT use 'Inter', 'Roboto', 'Open Sans', 'Lato', or 'Syne' for Headings.",
+    "Use lucide-react for all icons.",
+    "For toasts, use 'sonner' (Shadcn default toast).",
+    "Build forms with React Hook Form + Zod + Shadcn Form components.",
+    "Implement a confirmation dialog using Shadcn AlertDialog before deleting a journal entry."
+  ]
+}

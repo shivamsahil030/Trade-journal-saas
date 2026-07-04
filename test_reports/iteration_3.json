@@ -1,0 +1,18 @@
+{
+  "summary": "Verified server.py runs without .env via safe defaults and `python server.py` entrypoint. Confirmed .env.example exists with all required keys. Confirmed existing supervisor-backed API + auth + journals still work after restoring .env.",
+  "tested_scope": ["backend", "auth", "integration"],
+  "passed": [
+    ".env.example exists at /app/backend/.env.example with MONGO_URL, DB_NAME, CORS_ORIGINS, FRONTEND_URL, JWT_SECRET, ADMIN_EMAIL, ADMIN_PASSWORD as real key=value lines",
+    "server.py has DEFAULTS dict + os.environ.setdefault loop for all 7 required keys (MONGO_URL, DB_NAME, JWT_SECRET, ADMIN_EMAIL, ADMIN_PASSWORD, FRONTEND_URL, CORS_ORIGINS)",
+    "server.py has `if __name__ == \"__main__\": uvicorn.run(...)` entrypoint honoring PORT/HOST env vars",
+    "No-env boot: moved /app/backend/.env to /tmp/env.bak, ran `PORT=8123 python server.py`, GET http://localhost:8123/api/ returned 200 with {\"message\":\"Trade Journal API\",\"status\":\"ok\"}",
+    "Cleanup done: process killed, port 8123 free, /app/backend/.env restored, supervisor backend restarted",
+    "Existing behavior intact: GET /api/ -> 200, POST /api/auth/login (admin@tradejournal.com/Admin@123) -> 200 with cookies, GET /api/auth/me -> 200, GET /api/journals -> 200 with existing TSLA journal"
+  ],
+  "failed": [],
+  "action_items": [],
+  "success_rate": {"backend": "100%", "frontend": "not tested (per request)"},
+  "retest_needed": false,
+  "full_testing_deferred": true,
+  "notes": "Frontend testing skipped per request. .env.example uses quoted values (KEY=\"value\") which python-dotenv parses correctly; keys are real (not commented placeholders)."
+}

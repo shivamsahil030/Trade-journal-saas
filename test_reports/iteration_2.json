@@ -1,0 +1,27 @@
+{
+  "summary": "Post CRA→Vite migration smoke test. Backend endpoints healthy; frontend served by Vite loads all pages; full auth + create-journal E2E works end-to-end.",
+  "tested_scope": ["frontend", "backend", "auth", "integration"],
+  "passed": [
+    "File layout: /app/frontend/index.html + src/main.jsx + src/App.jsx exist; craco.config.js, public/index.html, src/index.js NOT present",
+    "package.json: vite 5.4.11 + @vitejs/plugin-react 4.3.4 present; no react-scripts / @craco/craco / cra-template / @emergentbase deps",
+    "vite.config.js: @→src alias, REACT_APP_* exposed via define, host 0.0.0.0:3000",
+    "postcss.config.cjs and tailwind.config.cjs exist (correct for type:module)",
+    "Backend GET /api/ → 200",
+    "Backend POST /api/auth/login (admin@tradejournal.com / Admin@123) → 200 with access_token + user payload",
+    "Backend GET /api/auth/me with cookies → 200",
+    "Backend GET /api/journals → 200",
+    "Frontend Landing (/) renders — title 'Trade Journal', hero visible, no JSX/PostCSS/ajv errors",
+    "Frontend /login renders with data-testid=input-email and input-password",
+    "Login flow → redirects to /dashboard, 'Welcome back' toast shown",
+    "/dashboard/new form renders (Trade date, Stock/Ticker, Trade setup select, Chart upload, Trade logic textarea)",
+    "Create journal (TSLA + Breakout + logic) succeeds — 'Journal saved' toast, redirect to /dashboard/:id detail page with Edit/Delete buttons",
+    "Dashboard now shows 'You have 1 journal' with TSLA card + Breakout tag",
+    "Protected route: clearing cookies then visiting /dashboard redirects to /login",
+    "Only two 401s in console for /api/auth/me on landing (documented as expected)"
+  ],
+  "failed": [],
+  "action_items": [],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "retest_needed": false,
+  "full_testing_deferred": true
+}
