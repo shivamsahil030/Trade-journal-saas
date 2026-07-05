@@ -94,6 +94,8 @@ export default function JournalForm({ initial = null, mode = "create" }) {
     try {
       if (mode === "create") {
         const { data } = await api.post("/journals", payload);
+        console.log("API Response:", data);
+console.log("Journal ID:", data.journal.id);
         toast.success("Journal saved");
         try { localStorage.removeItem(DRAFT_KEY); } catch {}
         navigate(`/dashboard/${data.journal.id}`);
