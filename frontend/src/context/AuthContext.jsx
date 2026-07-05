@@ -12,10 +12,14 @@ export function AuthProvider({ children }) {
       const { data } = await api.get("/auth/me");
       setUser(data.user);
       setStatus("authed");
-    } catch (e) {
-      setUser(null);
-      setStatus("guest");
-    }
+    } 
+    catch (e) {
+  console.log("AUTH STATUS:", e.response?.status);
+  console.log("AUTH DATA:", e.response?.data);
+
+  setUser(null);
+  setStatus("guest");
+}
   }, []);
 
   useEffect(() => {
