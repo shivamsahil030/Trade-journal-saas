@@ -244,7 +244,7 @@ async def register(payload: RegisterInput, response: Response):
     access = create_access_token(str(result.inserted_id), email)
     refresh = create_refresh_token(str(result.inserted_id))
     set_auth_cookies(response, access, refresh)
-    return {"user": user_out(doc), "access_token": access}
+    return {"user": user_out(doc),}
 
 
 @api_router.post("/auth/login")
@@ -263,7 +263,7 @@ async def login(payload: LoginInput, request: Request, response: Response):
     access = create_access_token(str(user["_id"]), email)
     refresh = create_refresh_token(str(user["_id"]))
     set_auth_cookies(response, access, refresh)
-    return {"user": user_out(user), "access_token": access}
+    return {"user": user_out(user),}
 
 
 @api_router.post("/auth/logout")
@@ -427,8 +427,10 @@ async def root():
 
 # ---------- CORS & Startup ----------
 frontend_origin = os.environ.get("FRONTEND_URL", "")
-allowed_origins = [o for o in [frontend_origin, "http://localhost:3000"] if o]
-
+allowed_origins = [
+    "http://localhost:3000",
+    "https://trade-journal-saas-1.onrender.com",
+]
 app.include_router(api_router)
 app.add_middleware(
     CORSMiddleware,

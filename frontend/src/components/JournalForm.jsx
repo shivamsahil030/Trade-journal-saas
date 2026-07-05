@@ -37,7 +37,7 @@ export default function JournalForm({ initial = null, mode = "create" }) {
   // Auto-save draft (create mode only)
   useEffect(() => {
     if (mode !== "create") return;
-    try { localStorage.setItem(DRAFT_KEY, JSON.stringify(form)); } catch {}
+    try { localStorage.setItem(DRAFT_KEY, JSON.stringify(form)); } catch { }
   }, [form, mode]);
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function JournalForm({ initial = null, mode = "create" }) {
         const d = JSON.parse(raw);
         if (d && typeof d === "object") setForm((f) => ({ ...f, ...d }));
       }
-    } catch {}
+    } catch { }
   }, [mode, initial]);
 
   const set = (k, v) => setForm((f) => ({ ...f, [k]: v }));
@@ -94,8 +94,10 @@ export default function JournalForm({ initial = null, mode = "create" }) {
     try {
       if (mode === "create") {
         const { data } = await api.post("/journals", payload);
+        console.log("API Response:", data);
+        console.log("Journal ID:", data.journal.id);
         toast.success("Journal saved");
-        try { localStorage.removeItem(DRAFT_KEY); } catch {}
+        try { localStorage.removeItem(DRAFT_KEY); } catch { }
         navigate(`/dashboard/${data.journal.id}`);
       } else {
         const { data } = await api.put(`/journals/${initial.id}`, payload);
